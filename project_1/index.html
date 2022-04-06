@@ -8,7 +8,49 @@
     <title>Play 2048!</title>
 </head>
 <body>
-    
+    <header>
+        <h1>2048!</h1>
+        <div class="scoreBox"></div>
+        <div class="triesBox"></div>
+    </header>
+    <div class="gameboard">
+        <div class="gameMsg">
+            <p>Game over.. :(</p>
+        </div>
+        <div class="gameGrid">
+            <div class="rows">
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+            </div>
+            <div class="rows">
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+            </div>
+            <div class="rows">
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+            </div>
+            <div class="rows">
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+                <div class="tileBox"></div>
+            </div>
+        </div>
+        <div class="tile"></div>
+    </div>
+    <div class="sidebar"></div>
+    <div class="buttons">
+        <button class="start">Start!</button>
+        <button class="reset">Reset!</button>
+    </div>
+
     <script src="./js/app.js"></script>
 </body>
 </html>
