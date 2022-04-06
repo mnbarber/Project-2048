@@ -1,0 +1,12 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url();
+}
+
+header {
+    font-size: 60px;
+    font-family: 'Rubik Glitch', cursive;
+}
