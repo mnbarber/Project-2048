@@ -223,9 +223,14 @@ function checkForLose() {
         if(tiles[i].innerHTML == '') {
             emptyTile++
         }
-    }
+    }   
     if(emptyTile === 0) {
         resultDisplay.innerHTML = 'YOU LOSE :('
         document.removeEventListener('keyup', control)
     }
 }
+
+// need some way to check if a move is valid - if you try to move and nothing happens it should not generate a new number
+// function checkValidMove() {
+    
+// }
