@@ -1,16 +1,22 @@
 body {
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 header {
     color: #65069c;
     font-family: 'Rubik Glitch', cursive;
     font-size: 40px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .gameboard {
-    width: 400px;
-    height: 400px;
+    width: 408px;
+    height: 408px;
     display: flex;
     flex-wrap: wrap;
     background-color: aliceblue;
@@ -21,10 +27,18 @@ header {
     height: 100px;
     background-color: #65069c;
     font-size: 60px;
+    font-size-adjust: inherit;
     text-align: center;
     font-weight: bold;
+    border: solid 1px black;
 }
 
 .result {
     color: #65069c;
+    font-size: 20px;
+}
+
+.scoreBox {
+    font-size: 20px;
+    position: relative;
 }
