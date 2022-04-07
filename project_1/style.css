@@ -1,12 +1,26 @@
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url();
+    background-color: black;
 }
 
 header {
-    font-size: 60px;
+    color: #65069c;
     font-family: 'Rubik Glitch', cursive;
+    font-size: 40px;
+}
+
+.gameboard {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+}
+
+.gameboard div {
+    width: 100px;
+    height: 100px;
+    background-color: #65069c;
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
 }
