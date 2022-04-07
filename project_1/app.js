@@ -5,13 +5,14 @@ const score = document.getElementById('score')
 const resultDisplay = document.querySelector('.result')
 const width = 4
 let tiles = []
+let currentScore = 0
 
 //create game board insides
 
 function createBoard() {
     for(let i = 0; i < width * width; i++) {
         let tile = document.createElement('div')
-        tile.innerHTML = 0
+        tile.innerHTML = ''
         gameBoard.appendChild(tile)
         tiles.push(tile)
     }
@@ -25,8 +26,9 @@ createBoard()
 // add a random 2 to the board
 function addNum() {
     let num = Math.floor(Math.random() * tiles.length)
-    if(tiles[num].innerHTML == 0) {
+    if(tiles[num].innerHTML == '') {
         tiles[num].innerHTML = 2
+        checkForLose()
     } else addNum()
 }
 
@@ -45,7 +47,7 @@ function moveRight() {
             let filteredRow = row.filter(numb => numb)
             // inserting 0's in the remaining array beside the 2's
             let emptyTile = 4 - filteredRow.length
-            let zeroes = Array(emptyTile).fill(0)
+            let zeroes = Array(emptyTile).fill('')
             // pushing the 2's to the right of the gameboard
             let newRow = zeroes.concat(filteredRow)
 
@@ -72,7 +74,7 @@ function moveLeft() {
             let filteredRow = row.filter(numb => numb)
             // inserting 0's in the remaining array beside the 2's
             let emptyTile = 4 - filteredRow.length
-            let zeroes = Array(emptyTile).fill(0)
+            let zeroes = Array(emptyTile).fill('')
             // pushing the 2's to the right of the gameboard
             let newRow = filteredRow.concat(zeroes)
 
@@ -96,7 +98,7 @@ function moveDown() {
 
         let filteredColumn = column.filter(numb => numb)
         let emptyTile = 4 - filteredColumn.length
-        let zeroes = Array(missing).fill(0)
+        let zeroes = Array(emptyTile).fill('')
         let newColumn = zeroes.concat(filteredColumn)
 
         tiles[i].innerHTML = newColumn[0]
@@ -118,7 +120,7 @@ function moveUp() {
 
         let filteredColumn = column.filter(numb => numb)
         let emptyTile = 4 - filteredColumn.length
-        let zeroes = Array(missing).fill(0)
+        let zeroes = Array(emptyTile).fill('')
         let newColumn = filteredColumn.concat(zeroes)
 
         tiles[i].innerHTML = newColumn[0]
@@ -134,9 +136,12 @@ function combineRow() {
         if(tiles[i].innerHTML === tiles[i+1].innerHTML) {
             let combinedTile = parseInt(tiles[i].innerHTML) + parseInt(tiles[i+1].innerHTML)
             tiles[i].innerHTML = combinedTile
-            tiles[i+1].innerHTML = 0
+            tiles[i+1].innerHTML = ''
+            currentScore += combinedTile
+            score.innerHTML = currentScore
         }
     }
+    checkForWin()
 }
 
 // and also combine tiles in a column if they are the same number
@@ -145,9 +150,12 @@ function combineColumn() {
         if(tiles[i].innerHTML === tiles[i+width].innerHTML) {
             let combinedTile = parseInt(tiles[i].innerHTML) + parseInt(tiles[i+width].innerHTML)
             tiles[i].innerHTML = combinedTile
-            tiles[i+width].innerHTML = 0
+            tiles[i+width].innerHTML = ''
+            currentScore += combinedTile
+            score.innerHTML = currentScore
         }
     }
+    checkForWin()
 }
 
 // assigning arrow key functionality! keycode.info gives you any keycode for your keyboard
@@ -156,6 +164,10 @@ function control(e) {
         keyRight()
     } else if(e.keyCode === 37) {
         keyLeft()
+    } else if(e.keyCode === 38) {
+        keyUp()
+    } else if(e.keyCode === 40) {
+        keyDown()
     }
 }
 
@@ -189,4 +201,31 @@ function keyUp() {
     combineColumn()
     moveUp()
     addNum()
+}
+
+// tested game so far and everything works!! arrows keys function to move all directions, numbers combine together and random 2's appear on every move! WOW! i can see clearly now the rain is gone
+
+// now to check for the mighty 2048 number to win the game! added this function on every combine number function 
+function checkForWin() {
+    for(let i = 0; i < tiles.length; i++) {
+        if(tiles[i].innerHTML == 2048) {
+            resultDisplay.innerHTML = 'YOU WIN!'
+            document.removeEventListener('keyup', control)
+        }
+    }
+}
+// changed the winning sum to 32 to check if it works cus i literally cannot get to 2048 but it does! game stops and YOU WIN! message comes up above the game board! changed back to 2048
+
+// now to check for lose! if there are no empty spaces left and no more moves available we lose
+function checkForLose() {
+    let emptyTile = 0
+    for(let i = 0; i < tiles.length; i++) {
+        if(tiles[i].innerHTML == '') {
+            emptyTile++
+        }
+    }
+    if(emptyTile === 0) {
+        resultDisplay.innerHTML = 'YOU LOSE :('
+        document.removeEventListener('keyup', control)
+    }
 }
