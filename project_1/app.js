@@ -2,10 +2,16 @@
 
 const gameBoard = document.querySelector('.gameboard')
 const score = document.getElementById('score')
+const tries = document.getElementById('tries')
 const resultDisplay = document.querySelector('.result')
+const startBtn = document.querySelector('.start')
+const resetBtn = document.querySelector('.reset')
 const width = 4
 let tiles = []
 let currentScore = 0
+let attempts = 0
+
+
 
 //create game board insides
 
@@ -16,8 +22,6 @@ function createBoard() {
         gameBoard.appendChild(tile)
         tiles.push(tile)
     }
-    addNum()
-    addNum()
 }
 
 createBoard()
@@ -30,6 +34,41 @@ function addNum() {
         tiles[num].innerHTML = 2
         checkForLose()
     } else addNum()
+}
+
+// button functionality
+// start button
+startBtn.addEventListener('click', function startGame() {
+    addNum()
+    addNum()
+    startBtn.removeEventListener('click', startGame)
+})
+
+// reset button
+resetBtn.addEventListener('click', function resetGame() {
+    for(let i = 0; i < tiles.length; i++) {
+        tiles[i].innerHTML = ''
+    }
+    addNum()
+    addNum()
+    triesCount()
+})
+
+// keep track of how many attempts to make people feel bad about themselves i guess idk
+function triesCount() {
+    attempts++
+    tries.innerHTML = attempts
+}
+
+// score tracker! need the score to update to the current highest tile amount somehow
+function scoreTracker() {
+    for(let i = 0; i < tiles.length; i++) {
+        if(currentScore < tiles[i].innerHTML) {
+            currentScore = tiles[i].innerHTML
+            score.innerHTML = currentScore
+        }
+    }
+    console.log(currentScore)
 }
 
 // move numbers in a direction
@@ -137,8 +176,7 @@ function combineRow() {
             let combinedTile = parseInt(tiles[i].innerHTML) + parseInt(tiles[i+1].innerHTML)
             tiles[i].innerHTML = combinedTile
             tiles[i+1].innerHTML = ''
-            currentScore += combinedTile
-            score.innerHTML = currentScore
+            scoreTracker()
         }
     }
     checkForWin()
@@ -151,8 +189,7 @@ function combineColumn() {
             let combinedTile = parseInt(tiles[i].innerHTML) + parseInt(tiles[i+width].innerHTML)
             tiles[i].innerHTML = combinedTile
             tiles[i+width].innerHTML = ''
-            currentScore += combinedTile
-            score.innerHTML = currentScore
+            scoreTracker()
         }
     }
     checkForWin()
