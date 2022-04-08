@@ -18,6 +18,7 @@ let attempts = 0
 function createBoard() {
     for(let i = 0; i < width * width; i++) {
         let tile = document.createElement('div')
+        tile.classList = "tiles"
         tile.innerHTML = ''
         gameBoard.appendChild(tile)
         tiles.push(tile)
@@ -63,12 +64,11 @@ function triesCount() {
 // score tracker! need the score to update to the current highest tile amount somehow
 function scoreTracker() {
     for(let i = 0; i < tiles.length; i++) {
-        if(currentScore < tiles[i].innerHTML) {
-            currentScore = tiles[i].innerHTML
+        if(currentScore < parseInt(tiles[i].innerHTML)) {
+            currentScore = parseInt(tiles[i].innerHTML)
             score.innerHTML = currentScore
         }
     }
-    console.log(currentScore)
 }
 
 // move numbers in a direction
@@ -259,15 +259,21 @@ function checkForLose() {
     for(let i = 0; i < tiles.length; i++) {
         if(tiles[i].innerHTML == '') {
             emptyTile++
+            console.log(i)
+        } else if(parseInt(tiles[i].innerHTML) == parseInt(tiles[i+1].innerHTML) || parseInt(tiles[i].innerHTML) == parseInt(tiles[i+width].innerHTML)) {
+            console.log('keep going')
+            console.log(i)
         }
-    }   
+    }
     if(emptyTile === 0) {
         resultDisplay.innerHTML = 'YOU LOSE :('
         document.removeEventListener('keyup', control)
-    }
+    }   
 }
 
 // need some way to check if a move is valid - if you try to move and nothing happens it should not generate a new number
-// function checkValidMove() {
-    
-// }
+function checkValidMove() {
+    for(let i = 0; i < tiles.length; i++) {
+
+    }
+}
