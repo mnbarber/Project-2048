@@ -256,21 +256,34 @@ function checkForWin() {
 // now to check for lose! if there are no empty spaces left and no more moves available we lose
 function checkForLose() {
     let emptyTile = 0
-    for(let i = 0; i < tiles.length; i++) {
-        if(tiles[i].innerHTML == '') {
+    for(let i = 0; i <= 15; i++) {
+        if(tiles[i].innerHTML === '') {
             emptyTile++
             console.log(i)
-        } else if(parseInt(tiles[i].innerHTML) == parseInt(tiles[i+1].innerHTML) || parseInt(tiles[i].innerHTML) == parseInt(tiles[i+width].innerHTML)) {
-            console.log('keep going')
-            console.log(i)
+        } else if(!i === 15) {
+                if(parseInt(tiles[i].innerHTML) === parseInt(tiles[i+1].innerHTML)) {
+                    console.log('keep going')
+                    console.log(i)
+                }
+        } else {
+            if(emptyTile === 0) {
+                resultDisplay.innerHTML = 'YOU LOSE :('
+                document.removeEventListener('keyup', control)
+            }  
         }
     }
-    if(emptyTile === 0) {
-        resultDisplay.innerHTML = 'YOU LOSE :('
-        document.removeEventListener('keyup', control)
-    }   
+    for(let i = 0; i < 11; i++) {
+        if(parseInt(tiles[i].innerHTML) === parseInt(tiles[i+width].innerHTML)) {
+            console.log('hi')
+        }
+         else {
+            if(emptyTile === 0) {
+                resultDisplay.innerHTML = 'YOU LOSE :('
+                document.removeEventListener('keyup', control)
+            }   
+        }
+    }
 }
-
 // need some way to check if a move is valid - if you try to move and nothing happens it should not generate a new number
 function checkValidMove() {
     for(let i = 0; i < tiles.length; i++) {
