@@ -256,11 +256,10 @@ function checkForWin() {
 // now to check for lose! if there are no empty spaces left and no more moves available we lose
 function checkForLose() {
     let emptyTile = 0
-    for(let i = 0; i <= 15; i++) {
+    for(let i = 0; i < 15; i++) {
         if(tiles[i].innerHTML === '') {
             emptyTile++
-            console.log(i)
-        } else if(!i === 15) {
+        } else if(i !== 15) {
                 if(parseInt(tiles[i].innerHTML) === parseInt(tiles[i+1].innerHTML)) {
                     console.log('keep going')
                     console.log(i)
