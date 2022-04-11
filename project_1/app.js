@@ -53,6 +53,10 @@ resetBtn.addEventListener('click', function resetGame() {
     addNum()
     addNum()
     triesCount()
+    resultDisplay.innerHTML = ''
+    currentScore = 0
+    score.innerHTML = 0
+    document.addEventListener('keyup', control)
 })
 
 // keep track of how many attempts to make people feel bad about themselves i guess idk
@@ -217,6 +221,7 @@ function keyRight() {
     combineRow()
     moveRight()
     addNum()
+    scoreTracker()
 }
 
 function keyLeft() {
@@ -260,32 +265,21 @@ function checkForLose() {
         if(tiles[i].innerHTML === '') {
             emptyTile++
         } else if(i !== 15) {
-                if(parseInt(tiles[i].innerHTML) === parseInt(tiles[i+1].innerHTML)) {
-                    console.log('keep going')
-                    console.log(i)
-                }
-        } else {
-            if(emptyTile === 0) {
-                resultDisplay.innerHTML = 'YOU LOSE :('
-                document.removeEventListener('keyup', control)
+            if(parseInt(tiles[i].innerHTML) === parseInt(tiles[i+1].innerHTML)) {
+                console.log('keep going')
+            }
+        } else if(emptyTile === 0) {
+            resultDisplay.innerHTML = 'YOU LOSE :('
+            document.removeEventListener('keyup', control)
             }  
         }
-    }
     for(let i = 0; i < 11; i++) {
         if(parseInt(tiles[i].innerHTML) === parseInt(tiles[i+width].innerHTML)) {
             console.log('hi')
-        }
-         else {
-            if(emptyTile === 0) {
+        } else if(emptyTile === 0) {
                 resultDisplay.innerHTML = 'YOU LOSE :('
                 document.removeEventListener('keyup', control)
             }   
-        }
     }
 }
-// need some way to check if a move is valid - if you try to move and nothing happens it should not generate a new number
-function checkValidMove() {
-    for(let i = 0; i < tiles.length; i++) {
 
-    }
-}
