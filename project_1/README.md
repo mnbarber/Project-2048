@@ -10,7 +10,7 @@ Link -> https://mnbarber.github.io/Project-1---2048/
 
 Simply click start to begin the game, good luck! 
 
-
+ss 
 
 ss
 
