@@ -10,11 +10,12 @@ Link -> https://mnbarber.github.io/Project-1---2048/
 
 Simply click start to begin the game, good luck! 
 
-![image](https://user-images.githubusercontent.com/34723980/162977830-098bb9f7-c794-433d-b149-3fc735af2866.png)
+![image](https://user-images.githubusercontent.com/34723980/162989848-62c53c02-e434-4450-ba6a-fce7b286c1b6.png)
 
-![image](https://user-images.githubusercontent.com/34723980/162978092-508155e1-b7d2-4fb0-98a7-48a327ef6b20.png)
+![image](https://user-images.githubusercontent.com/34723980/162989972-a7194199-c283-4a67-ae2a-ec3762a1f352.png)
 
-![image](https://user-images.githubusercontent.com/34723980/162978321-f9b6734a-9400-4f98-abc9-d726f044a976.png) 
+![image](https://user-images.githubusercontent.com/34723980/162990097-d6637189-7676-4829-94c2-23838d776697.png)
+
 
 Next steps:
 - implement a hint button to tell you if a move is available 
