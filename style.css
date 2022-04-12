@@ -1,5 +1,5 @@
 body {
-    background-image: url("https://media3.giphy.com/media/CW16nFVXLSQxSMUEMd/giphy.gif?cid=ecf05e470j0i0aj55rp74umwhhny1z8yzpjhtrjpa0c4jzcj&rid=giphy.gif&ct=g");
+    background-image: url("https://media0.giphy.com/media/luMbOCx8FSR58RmmeN/giphy.gif?cid=ecf05e47w4vplaxryzyswbpexphtlgmgb2aqglvonknzbitv&rid=giphy.gif&ct=g");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    color: black;
+    color: #b177f7;
     font-family: 'Rubik Glitch', cursive;
     font-size: 40px;
     display: flex;
