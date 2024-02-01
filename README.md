@@ -6,7 +6,7 @@ The object of the game is to move the tiles around the game board, combining the
 
 Uses JavaScript, HTML, CSS.
 
-Link -> [https://mnbarber.github.io/Project-1---2048/](https://mnbarber.github.io/Project-2048/)
+Link -> [https://mnbarber.github.io/Project-2048/](https://mnbarber.github.io/Project-2048/)
 
 Simply click start to begin the game, good luck! 
 
